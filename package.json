@@ -1,6 +1,6 @@
 {
   "name": "@mambalabsdev/mcp-company-social-presence-mapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for the Mamba Labs Company Social Presence Mapper actor on Apify. Map a company domain to its official LinkedIn, X, Instagram, Facebook, and YouTube URLs plus follower counts, returned as flat Clay-ready JSON.",
   "type": "module",
   "bin": {
