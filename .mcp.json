@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "mamba-company-social-presence-mapper": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mambalabsdev/mcp-company-social-presence-mapper"
+      ],
+      "env": {
+        "APIFY_TOKEN": "your-apify-token"
+      }
+    }
+  }
+}
