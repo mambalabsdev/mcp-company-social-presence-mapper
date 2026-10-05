@@ -11,6 +11,8 @@ An MCP server that exposes the Mamba Labs Company Social Presence Mapper as a si
 - [Prerequisites](#prerequisites)
 - [Example prompts](#example-prompts)
 - [Tool and inputs](#tool-and-inputs)
+- [Output](#output)
+- [Pricing](#pricing)
 - [Full actor documentation](#full-actor-documentation)
 - [Mamba Labs GTM Suite](#mamba-labs-gtm-suite)
 - [License](#license)
@@ -69,11 +71,28 @@ Get your token at https://console.apify.com/account/integrations, paste it in, a
 
 Notes on coverage: X / Twitter returns the profile URL only; its follower count requires authentication, which this server does not use. Instagram and Facebook follower counts are best-effort and may be null when the page hides them.
 
+## Output
+
+One flat row per company: `company_domain`, `company_name`, `platforms_checked`, `platforms_found`, and for each of LinkedIn, X, Instagram, Facebook, and YouTube a `<platform>_url`, `<platform>_followers`, `<platform>_discovery`, and `<platform>_status`, plus `confidence`, `run_date`, `degraded`, and `degradation_reason`.
+
+## Pricing
+
+Company Social Presence Mapper is pay per event on Apify.
+
+| Event | Price | Fires when |
+| --- | ---: | --- |
+| `apify-actor-start` | $0.00005 | Once per run, on start, one event per GB of memory (minimum one). Apify's start event. |
+| `apify-default-dataset-item` | $0.015 (FREE tier), down to $0.0128 on GOLD and above | Once per row written to the dataset. |
+
+The tool starts the actor run and polls it to a finished status, so a long run is not cut off at 300 seconds. A run that does not succeed comes back as an error with its run ID and status.
+
 ## Full actor documentation
 
-For the complete input and output reference, pricing, and run history, see the Company Social Presence Mapper actor on the Apify Store (canonical immutable Actor ID URL):
+For the complete input and output reference, pricing, and run history, see the Company Social Presence Mapper actor on the Apify Store:
 
-https://apify.com/mambalabs/4k6CCemkgBDz18m2h
+https://apify.com/mambalabs/company-social-presence-mapper
+
+The wrapper calls the actor by its immutable ID `4k6CCemkgBDz18m2h`, so a Store rename never breaks it.
 
 ---
 
