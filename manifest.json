@@ -1,7 +1,7 @@
 {
   "manifest_version": "0.3",
   "name": "mcp-company-social-presence-mapper",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "MCP server that maps a company domain to its official LinkedIn, X, Instagram, Facebook, and YouTube URLs plus follower counts, returned as flat Clay-ready JSON.",
   "author": {
     "name": "Mamba Labs"
