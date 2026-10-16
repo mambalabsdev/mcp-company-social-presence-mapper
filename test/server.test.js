@@ -16,7 +16,7 @@ const ACTOR_REQUIRED = [];
 // Every input the live actor exposes to a buyer must be exposed by the tool.
 // Hidden schema fields are excluded by rule: source_tag is the landing page
 // attribution tag the actor sets for itself, not something a caller supplies.
-const ACTOR_INPUTS = ["company_domain", "company_name", "includeFollowerCounts", "platforms", "skipCache"];
+const ACTOR_INPUTS = ["max_charge_usd","company_domain", "company_name", "includeFollowerCounts", "platforms", "skipCache"];
 
 // Speak MCP over stdio to the built server and return the tools/list result.
 // No APIFY_TOKEN is set, on purpose: a client must see capabilities before it
