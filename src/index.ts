@@ -215,12 +215,13 @@ server.registerTool(
       "Map a company's social media presence across LinkedIn, X, Instagram, Facebook, and YouTube. Returns profile URLs and follower counts in flat Clay-ready JSON. Profiles are discovered from the company's own homepage links, a web search fallback, and pattern guessing, then validated against the company. Follower counts are extracted where public; X is URL-only (its count needs login) and Instagram and Facebook counts are best-effort. Read-only; requires an APIFY_TOKEN and consumes Apify credits per call.",
     annotations: {
       title: "Map Company Social Presence",
-      readOnlyHint: true,
+      readOnlyHint: false,
       destructiveHint: false,
       idempotentHint: true,
       openWorldHint: true,
     },
     inputSchema: {
+      max_charge_usd: z.number().min(0).optional().describe("Optional. The run stops before any charge that would take this run's total past this amount in USD, and every row already charged is kept. Leave it empty to rely only on the maximum cost per run set in Apify, which the actor also honors."),
       company_domain: z
         .string()
         .optional()
@@ -243,7 +244,7 @@ server.registerTool(
         .describe("Force a fresh lookup and ignore the 7 day result cache."),
     },
   },
-  async ({ company_domain, company_name, platforms, includeFollowerCounts, skipCache }) => {
+  async ({ company_domain, company_name, platforms, includeFollowerCounts, skipCache, max_charge_usd }) => {
     if (
       (company_domain === undefined || company_domain === "") &&
       (company_name === undefined || company_name === "")
@@ -257,6 +258,7 @@ server.registerTool(
       "4k6CCemkgBDz18m2h",
       "Company Social Presence Mapper",
       compact({
+        max_charge_usd,
         company_domain,
         company_name,
         platforms,
